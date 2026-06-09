@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem ACC Penugasan & Surat Tugas Auditor AMI 2026 — LPMPP UPNVJ</title>
+<style>
+:root{
+  --biru:#003F7F; --biru2:#012b57; --cyan:#00AEEF; --gold:#F5A623; --oranye:#E8642C;
+  --ink:#16202e; --muted:#5b6b7e; --line:#dde5ee; --bg:#eef3f9;
+  --ok:#1a8f4c; --warn:#E8642C; --wait:#b9851a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5;font-size:15px}
+.app-header{background:linear-gradient(120deg,var(--biru2),var(--biru) 55%,#024a93);
+  color:#fff;padding:18px 26px;position:relative;overflow:hidden;box-shadow:0 2px 14px rgba(0,28,64,.25)}
+.app-header::after{content:"";position:absolute;inset:0;
+  background-image:radial-gradient(circle at 12% 20%,rgba(0,174,239,.30),transparent 9px),
+  radial-gradient(circle at 30% 70%,rgba(0,174,239,.22),transparent 8px),
+  radial-gradient(circle at 62% 30%,rgba(245,166,35,.18),transparent 7px),
+  radial-gradient(circle at 85% 65%,rgba(0,174,239,.22),transparent 9px);opacity:.9;pointer-events:none}
+.app-header h1{font-size:18px;letter-spacing:.2px;position:relative;z-index:1}
+.app-header p{font-size:12.5px;opacity:.86;position:relative;z-index:1;margin-top:2px}
+.brand-strip{height:4px;background:linear-gradient(90deg,var(--cyan),var(--gold))}
+.nav{display:flex;gap:8px;padding:12px 26px;background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30;flex-wrap:wrap}
+.nav button{font-family:inherit;font-size:13.5px;font-weight:700;border:1px solid var(--line);background:#fff;color:var(--muted);padding:8px 16px;border-radius:8px;cursor:pointer;transition:.15s}
+.nav button:hover{border-color:var(--cyan);color:var(--biru)}
+.nav button.active{background:var(--biru);color:#fff;border-color:var(--biru)}
+.demo-banner{background:#fff7e8;border:1px solid #f0d79a;color:#7a5a12;font-size:12.5px;padding:9px 26px;display:flex;gap:8px;align-items:center}
+.demo-banner b{color:var(--biru)}
+.wrap{max-width:1040px;margin:0 auto;padding:24px 26px 64px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:18px;box-shadow:0 1px 3px rgba(16,32,46,.05)}
+.card h2{font-size:16px;color:var(--biru);margin-bottom:4px}
+.card .sub{font-size:12.5px;color:var(--muted);margin-bottom:16px}
+label{font-size:12.5px;font-weight:700;color:var(--muted);display:block;margin-bottom:5px}
+select,input[type=text],input[type=password],textarea{font-family:inherit;font-size:14px;width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#fbfdff;color:var(--ink)}
+textarea{resize:vertical;min-height:64px}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,174,239,.15)}
+.row2{display:grid;grid-template-columns:1fr 220px;gap:16px;align-items:end}
+.btn{font-family:inherit;font-weight:800;font-size:14px;border:none;border-radius:10px;padding:12px 22px;cursor:pointer;transition:.15s;letter-spacing:.2px}
+.btn-primary{background:var(--biru);color:#fff}.btn-primary:hover{background:#024a93}
+.btn-gold{background:var(--gold);color:#2a1e00}.btn-gold:hover{filter:brightness(1.05)}
+.btn-ghost{background:#fff;color:var(--biru);border:1px solid var(--line)}.btn-ghost:hover{border-color:var(--cyan)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn-sm{padding:7px 13px;font-size:12.5px;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f4f8fd;color:var(--biru);font-size:11.5px;text-transform:uppercase;letter-spacing:.4px}
+tr:last-child td{border-bottom:none}
+.tag{display:inline-block;font-size:11px;font-weight:800;padding:3px 9px;border-radius:20px;letter-spacing:.2px}
+.tag-ketua{background:#003F7F;color:#fff}
+.tag-anggota{background:#e7f0fb;color:#1d6fb8}
+.tag-baru{background:#fff1e6;color:var(--oranye)}
+.tag-lama{background:#eaf6ee;color:var(--ok)}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800}
+.st::before{content:"";width:9px;height:9px;border-radius:50%}
+.st-belum{color:var(--warn)}.st-belum::before{background:var(--warn)}
+.st-acc{color:var(--wait)}.st-acc::before{background:var(--wait)}
+.st-terbit{color:var(--ok)}.st-terbit::before{background:var(--ok)}
+.ident{display:flex;flex-wrap:wrap;gap:10px 26px;background:#f4f8fd;border:1px solid var(--line);border-radius:11px;padding:14px 18px;margin-bottom:16px}
+.ident div span{display:block;font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.3px}
+.ident div b{font-size:14.5px;color:var(--biru)}
+.pakta{background:#fbfcff;border:1px dashed #b9cbe2;border-radius:11px;padding:16px 18px;margin:8px 0 16px;font-size:13px}
+.pakta ul{margin:8px 0 0 18px}.pakta li{margin-bottom:5px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:13.5px}
+.chk input{width:18px;height:18px;margin-top:2px;accent-color:var(--biru);flex:none}
+.kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi .k{background:#fff;border:1px solid var(--line);border-radius:13px;padding:16px 18px;position:relative;overflow:hidden}
+.kpi .k::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px}
+.kpi .k.t b{font-size:26px;color:var(--biru);display:block;line-height:1.1}
+.kpi .k span{font-size:12px;color:var(--muted);font-weight:700}
+.kpi .k.c1::before{background:var(--biru)}.kpi .k.c2::before{background:var(--warn)}
+.kpi .k.c3::before{background:var(--wait)}.kpi .k.c4::before{background:var(--ok)}
+.toolbar{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+.toolbar input{max-width:260px}
+.flash{background:#eaf6ee;border:1px solid #b7e0c4;color:#13703c;padding:12px 16px;border-radius:10px;font-size:13.5px;margin-bottom:14px;display:none}
+.wait-note{background:#fff7e8;border:1px solid #f0d79a;color:#7a5a12;padding:11px 15px;border-radius:10px;font-size:13px;font-weight:700;display:none;margin-top:4px}
+.hidden{display:none}
+.hint{font-size:11.5px;color:var(--muted);margin-top:5px}
+.gate{max-width:430px;margin:46px auto}
+.gate .lock{font-size:30px;text-align:center;margin-bottom:6px}
+/* SURAT */
+.surat-overlay{position:fixed;inset:0;background:rgba(8,20,38,.55);z-index:60;display:none;overflow:auto;padding:30px 16px}
+.surat-overlay.show{display:block}
+.surat-tools{max-width:790px;margin:0 auto 12px;display:flex;gap:10px;justify-content:flex-end}
+.surat{max-width:790px;margin:0 auto;background:#fff;padding:46px 54px 40px;font-family:Arial,Helvetica,sans-serif;color:#111;font-size:12.5px;line-height:1.55;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.kop{display:flex;gap:16px;align-items:center;border-bottom:3px double #111;padding-bottom:10px;margin-bottom:4px}
+.kop .logo{width:66px;height:66px;flex:none;border-radius:50%;background:radial-gradient(circle at 50% 38%,#024a93,#001f44);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:10px;text-align:center;letter-spacing:.5px;border:2px solid var(--gold)}
+.kop .ktext{text-align:center;flex:1}
+.kop .ktext .u{font-size:12px;letter-spacing:.5px}
+.kop .ktext .b{font-size:17px;font-weight:800;letter-spacing:.5px}
+.kop .ktext .l{font-size:14px;font-weight:800;color:#003F7F}
+.kop .ktext .a{font-size:10.5px;color:#333;margin-top:3px}
+.surat h3{text-align:center;text-decoration:underline;font-size:14px;letter-spacing:.5px;margin:18px 0 2px}
+.surat .nomor{text-align:center;font-size:12px;margin-bottom:16px}
+.surat p{margin-bottom:9px;text-align:justify}
+.menimbang{display:grid;grid-template-columns:24px 95px 1fr;gap:2px 6px;margin-bottom:12px}
+.surat table.tugas{margin:8px 0 12px;font-size:11.5px}
+.surat table.tugas th,.surat table.tugas td{border:1px solid #999;padding:6px 8px}
+.surat table.tugas th{background:#eef4fb;color:#003F7F;text-transform:none;letter-spacing:0;font-size:11px}
+.ttd{margin-top:22px;display:flex;justify-content:space-between;align-items:flex-start}
+.ttd .qr{width:96px;text-align:center;font-size:9px;color:#444}
+.ttd .qr svg{border:1px solid #ccc}
+.ttd .sign{width:280px;text-align:left}
+.ttd .sign .ttd-box{height:62px;border:1px dashed #c4c4c4;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#aaa;font-size:8.5px;text-align:center;margin:4px 0}
+.ttd .sign b{text-decoration:underline}
+.foot-note{margin-top:20px;border-top:1px solid #ccc;padding-top:8px;font-size:9.5px;color:#777;font-style:italic}
+@media print{body *{visibility:hidden}.surat-overlay,.surat-overlay *{visibility:visible}
+  .surat-overlay{position:absolute;inset:0;background:#fff;padding:0}.surat-tools{display:none}
+  .surat{box-shadow:none;max-width:100%;padding:28px 36px}}
+@media(max-width:720px){.row2{grid-template-columns:1fr}.kpi{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="app-header">
+  <h1>Sistem ACC Penugasan & Penerbitan Surat Tugas Auditor</h1>
+  <p>Audit Mutu Internal (AMI) 2026 &nbsp;•&nbsp; LPMPP — UPN "Veteran" Jakarta</p>
+</div>
+<div class="brand-strip"></div>
+<div class="nav">
+  <button id="nav-auditor" class="active" onclick="show('auditor')">👤 Portal Auditor (ACC)</button>
+  <button id="nav-lpmpp" onclick="show('lpmpp')">🏛️ Panel LPMPP (Monitoring & Terbit)</button>
+</div>
+<div class="demo-banner">
+  <span>⚙️</span><span><b>PROTOTIPE.</b> Status tersimpan di memori sesi (reset bila dimuat ulang). Produksi: Google Apps Script + Google Sheets, auditor masuk via magic link + NIP, Panel LPMPP dibatasi daftar email staf. Logo, nomor surat & NIP penanda tangan adalah placeholder.</span>
+</div>
+
+<!-- PORTAL AUDITOR -->
+<div class="wrap" id="view-auditor">
+  <div class="card" id="gate-card">
+    <h2>Buka Penugasan Anda</h2>
+    <p class="sub">Simulasi membuka <i>magic link</i> personal yang dikirim LPMPP via email. Pada produksi, tautan ini membuka langsung paket auditor yang bersangkutan — auditor tidak pernah melihat data auditor lain maupun Panel LPMPP.</p>
+    <div class="row2">
+      <div><label>Pilih auditor (simulasi pemilik link)</label><select id="sel-auditor"></select></div>
+      <div><label>NIP (faktor ke-2)</label><input type="text" id="inp-nip" placeholder="isi apa saja (demo)"></div>
+    </div>
+    <div style="margin-top:16px"><button class="btn btn-primary" onclick="openAuditor()">Buka Penugasan Saya →</button></div>
+  </div>
+
+  <div id="auditor-detail" class="hidden">
+    <div class="flash" id="flash-acc">✓ Kesediaan & pakta integritas Anda terkirim ke LPMPP.</div>
+    <div class="card">
+      <h2>Lembar Kesediaan & Pakta Integritas Auditor</h2>
+      <p class="sub">Periksa daftar penugasan, lalu konfirmasikan kesediaan Anda.</p>
+      <div class="ident" id="ident-box"></div>
+      <label style="margin-bottom:8px">Daftar Penugasan Audit (teragregasi dalam satu lembar)</label>
+      <div style="overflow-x:auto;border:1px solid var(--line);border-radius:11px">
+        <table id="tbl-tugas"><thead><tr>
+          <th>No</th><th>Unit / Prodi Auditee</th><th>Fakultas</th><th>Jenjang</th><th>Status</th><th>Peran Anda</th><th>Tim Audit (rekan)</th>
+        </tr></thead><tbody></tbody></table>
+      </div>
+      <div style="margin-top:16px">
+        <label>Catatan ketersediaan (opsional)</label>
+        <textarea id="inp-note" placeholder="mis. Tidak tersedia 14–18 Juli 2026; lebih disukai pekan pertama Agustus" onchange="setNote(this.value)"></textarea>
+        <p class="hint">Penjadwalan tanggal on-site dikoordinasikan terpusat oleh LPMPP bersama auditee. Catatan ini hanya membantu penjadwalan.</p>
+      </div>
+      <div class="pakta">
+        <b style="color:var(--biru)">PERNYATAAN INDEPENDENSI & INTEGRITAS</b>
+        <p style="margin-top:6px">Dengan menyatakan kesediaan ini, saya selaku auditor AMI 2026 menyatakan:</p>
+        <ul>
+          <li>bersedia melaksanakan penugasan audit pada unit-unit di atas sesuai Pedoman AMI 2026;</li>
+          <li>tidak memiliki konflik kepentingan maupun afiliasi dengan unit yang saya audit (sesuai ISO 19011:2018 Klausul 4.2);</li>
+          <li>menjaga kerahasiaan, objektivitas, dan kejujuran sepanjang proses audit;</li>
+          <li>melaksanakan tugas secara profesional dan bebas dari tekanan pihak mana pun.</li>
+        </ul>
+        <label class="chk"><input type="checkbox" id="chk-pakta" onchange="document.getElementById('btn-acc').disabled=!this.checked">
+          <span>Saya telah membaca dan menyetujui pernyataan di atas, serta menyatakan <b>kesediaan</b> menerima penugasan ini.</span></label>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button class="btn btn-gold" id="btn-acc" disabled onclick="doAcc()">✓ ACC & Kirim Kesediaan</button>
+        <button class="btn btn-primary" id="btn-unduh" onclick="openSuratFor(CURRENT)" disabled>⬇ Unduh Surat Tugas</button>
+        <button class="btn btn-ghost" onclick="backGate()">← Kembali</button>
+      </div>
+      <div class="wait-note" id="acc-wait">⏳ Kesediaan terkirim. Surat tugas akan dapat diunduh setelah diverifikasi & ditandatangani LPMPP.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PANEL LPMPP -->
+<div class="wrap hidden" id="view-lpmpp">
+  <div class="card gate" id="lpmpp-gate">
+    <div class="lock">🔒</div>
+    <h2 style="text-align:center">Panel LPMPP</h2>
+    <p class="sub" style="text-align:center">Halaman ini hanya untuk staf LPMPP.</p>
+    <label>Passcode</label>
+    <input type="password" id="inp-pass" placeholder="masukkan passcode" onkeydown="if(event.key==='Enter')cekPass()">
+    <p id="pass-err" style="color:var(--warn);font-size:12.5px;margin-top:8px;display:none">Passcode salah.</p>
+    <div style="margin-top:14px"><button class="btn btn-primary" onclick="cekPass()">Masuk</button></div>
+    <p class="hint">Demo passcode: <b>lpmpp2026</b>. Di produksi, akses dibatasi daftar email staf LPMPP (login Google), bukan passcode bersama.</p>
+  </div>
+
+  <div id="lpmpp-content" class="hidden">
+    <div class="kpi">
+      <div class="k t c1"><b id="kpi-total">0</b><span>Total Auditor</span></div>
+      <div class="k t c2"><b id="kpi-belum">0</b><span>Belum ACC</span></div>
+      <div class="k t c3"><b id="kpi-acc">0</b><span>Sudah ACC · Menunggu Terbit</span></div>
+      <div class="k t c4"><b id="kpi-terbit">0</b><span>Surat Terbit</span></div>
+    </div>
+    <div class="card">
+      <h2>Monitoring Kesediaan & Penerbitan Surat Tugas</h2>
+      <p class="sub">Surat tugas hanya dapat diterbitkan setelah auditor ACC (alur dua tahap — kendali penerbitan tetap pada LPMPP).</p>
+      <div class="toolbar">
+        <input type="text" id="search-lpmpp" placeholder="Cari nama auditor…" oninput="renderLpmpp()">
+        <button class="btn btn-primary btn-sm" onclick="terbitMassal()">⚡ Terbitkan Massal (yang sudah ACC)</button>
+        <button class="btn btn-ghost btn-sm" onclick="simAccAll()">▶ Simulasikan: semua auditor ACC</button>
+      </div>
+      <div style="overflow-x:auto">
+        <table id="tbl-lpmpp"><thead><tr>
+          <th>#</th><th>Auditor</th><th>Unit Asal</th><th>Jml</th><th>Status</th><th>No. Surat</th><th style="text-align:right">Aksi</th>
+        </tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SURAT OVERLAY -->
+<div class="surat-overlay" id="surat-overlay">
+  <div class="surat-tools">
+    <button class="btn btn-gold btn-sm" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+    <button class="btn btn-ghost btn-sm" onclick="closeSurat()">Tutup ✕</button>
+  </div>
+  <div class="surat" id="surat-body"></div>
+</div>
+
+<script>
+const AUDITORS = [{"name": "Alina Cynthia Dewi", "code": "ACD", "asalFak": "Fakultas Teknik", "asalProdi": "S1 Teknik Industri", "items": [{"no": "15", "fakultas": "Fakultas Hukum", "unit": "Hukum", "jenjang": "S3", "statusProdi": "Baru", "role": "Anggota", "partner": "Sri Mulyantini", "partnerRole": "Ketua", "partnerFak": "Fakultas Ekonomi dan Bisnis", "partnerProdi": "S1 Manajemen"}, {"no": "23", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Profesi Ners", "jenjang": "Profesi", "statusProdi": "Lama", "role": "Anggota", "partner": "Ima Maria", "partnerRole": "Ketua", "partnerFak": "Fakultas Kedokteran", "partnerProdi": "S1 Kedokteran"}]}, {"name": "Andhika Octa Indarso", "code": "AOI", "asalFak": "Fakultas Ilmu Komputer", "asalProdi": "D3 Sistem Informasi", "items": [{"no": "3", "fakultas": "Fakultas Teknik", "unit": "Teknik Perkapalan", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Cut Sarida Pompey", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "Profesi Ners"}]}, {"name": "Aniek Irawatie", "code": "AIN", "asalFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "asalProdi": "S1 Ilmu Komunikasi", "items": [{"no": "16", "fakultas": "Fakultas Hukum", "unit": "Hukum Bisnis", "jenjang": "S1", "statusProdi": "Baru", "role": "Ketua", "partner": "Vinta Sevilla", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Komunikasi"}, {"no": "54", "fakultas": "Satuan Kerja Pendukung", "unit": "UPA Pengembangan Karir dan Kewirausahaan", "jenjang": "-", "statusProdi": "-", "role": "Anggota", "partner": "Ekawati Jati Wibawaningsih", "partnerRole": "Ketua", "partnerFak": "Fakultas Ekonomi dan Bisnis", "partnerProdi": "S1 Akuntansi"}]}, {"name": "Anindita Lintangdesi Afriani", "code": "ALA", "asalFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "asalProdi": "S1 Ilmu Komunikasi", "items": [{"no": "9", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Ekonomi Pembangunan", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Muthia Sakti", "partnerRole": "Ketua", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}, {"no": "11", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Manajemen", "jenjang": "S2", "statusProdi": "Lama", "role": "Anggota", "partner": "Muthia Sakti", "partnerRole": "Ketua", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}, {"no": "29", "fakultas": "Fakultas Ilmu Komputer", "unit": "Sains Data", "jenjang": "S1", "statusProdi": "Baru", "role": "Anggota", "partner": "Santika Sari", "partnerRole": "Ketua", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Industri"}]}, {"name": "Arga Buntara", "code": "ABR", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Kesehatan Masyarakat", "items": [{"no": "27", "fakultas": "Fakultas Ilmu Komputer", "unit": "Informatika", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Henry Binsar Hamonangan Sitorus", "partnerRole": "Ketua", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Elektro"}, {"no": "51", "fakultas": "Satuan Kerja Pendukung", "unit": "UPA Bahasa", "jenjang": "-", "statusProdi": "-", "role": "Ketua", "partner": "", "partnerRole": "Anggota", "partnerFak": "", "partnerProdi": ""}]}, {"name": "Arief Wahyudi Jadmiko", "code": "AWJ", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Keperawatan", "items": [{"no": "40", "fakultas": "Fakultas Kedokteran", "unit": "Profesi Dokter", "jenjang": "Profesi", "statusProdi": "Lama", "role": "Ketua", "partner": "Lusyta Puri Ardhiyanti", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S2 Kesehatan Masyarakat"}, {"no": "42", "fakultas": "Fakultas Kedokteran", "unit": "Spesialis Radiologi", "jenjang": "Spesialis", "statusProdi": "Baru", "role": "Ketua", "partner": "Lusyta Puri Ardhiyanti", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S2 Kesehatan Masyarakat"}]}, {"name": "Chandrayani Simanjorang", "code": "CSH", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Kesehatan Masyarakat", "items": [{"no": "1", "fakultas": "Fakultas Teknik", "unit": "Teknik Industri", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Kraugusteeliana", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Sistem Informasi"}, {"no": "41", "fakultas": "Fakultas Kedokteran", "unit": "Sains Biomedis", "jenjang": "S2", "statusProdi": "Baru", "role": "Ketua", "partner": "Suparni", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}, {"no": "55", "fakultas": "Satuan Kerja Pendukung", "unit": "Satuan Pengawasan Internal (SPI)", "jenjang": "-", "statusProdi": "-", "role": "Ketua", "partner": "", "partnerRole": "Anggota", "partnerFak": "", "partnerProdi": ""}]}, {"name": "Citraresmi Widoretno Putri", "code": "CWP", "asalFak": "Fakultas Hukum", "asalProdi": "S1 Hukum", "items": [{"no": "6", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Akuntansi", "jenjang": "D3", "statusProdi": "Lama", "role": "Anggota", "partner": "Nurfarah Nidatya", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Hubungan Internasional"}]}, {"name": "Cut Sarida Pompey", "code": "CSP", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "Profesi Ners", "items": [{"no": "3", "fakultas": "Fakultas Teknik", "unit": "Teknik Perkapalan", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Andhika Octa Indarso", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "D3 Sistem Informasi"}, {"no": "39", "fakultas": "Fakultas Kedokteran", "unit": "Farmasi", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Iin Fatmawati", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Gizi"}]}, {"name": "Dwi Aryanti Ramadhani", "code": "DAR", "asalFak": "Fakultas Hukum", "asalProdi": "S1 Hukum", "items": [{"no": "7", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Manajemen", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Nurfarah Nidatya", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Hubungan Internasional"}, {"no": "8", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Akuntansi", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Restu Rahmawati", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Politik"}, {"no": "12", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Akuntansi", "jenjang": "S2", "statusProdi": "Lama", "role": "Anggota", "partner": "Shanti Darmastuti", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Hubungan Internasional"}]}, {"name": "Ekawati Jati Wibawaningsih", "code": "EJW", "asalFak": "Fakultas Ekonomi dan Bisnis", "asalProdi": "S1 Akuntansi", "items": [{"no": "31", "fakultas": "Fakultas Ilmu Sosial dan Ilmu Politik", "unit": "Sains Informasi", "jenjang": "S1", "statusProdi": "Baru", "role": "Anggota", "partner": "Ema Nurkhaerani", "partnerRole": "Ketua", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}, {"no": "54", "fakultas": "Satuan Kerja Pendukung", "unit": "UPA Pengembangan Karir dan Kewirausahaan", "jenjang": "-", "statusProdi": "-", "role": "Ketua", "partner": "Aniek Irawatie", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Komunikasi"}]}, {"name": "Ema Nurkhaerani", "code": "ENM", "asalFak": "Fakultas Hukum", "asalProdi": "S1 Hukum", "items": [{"no": "5", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Perbankan dan Keuangan", "jenjang": "D3", "statusProdi": "Lama", "role": "Anggota", "partner": "Restu Rahmawati", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Politik"}, {"no": "31", "fakultas": "Fakultas Ilmu Sosial dan Ilmu Politik", "unit": "Sains Informasi", "jenjang": "S1", "statusProdi": "Baru", "role": "Ketua", "partner": "Ekawati Jati Wibawaningsih", "partnerRole": "Anggota", "partnerFak": "Fakultas Ekonomi dan Bisnis", "partnerProdi": "S1 Akuntansi"}]}, {"name": "Erna Harfiani", "code": "EHR", "asalFak": "Fakultas Kedokteran", "asalProdi": "S1 Kedokteran", "items": [{"no": "19", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Kesehatan Masyarakat", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Santika Sari", "partnerRole": "Anggota", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Industri"}]}, {"name": "Fajar Rahayu Ikhwannul Mariati", "code": "FRI", "asalFak": "Fakultas Teknik", "asalProdi": "S1 Teknik Elektro", "items": [{"no": "18", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Fisioterapi", "jenjang": "D3", "statusProdi": "Lama", "role": "Anggota", "partner": "Maria Selvester Thadeus", "partnerRole": "Ketua", "partnerFak": "Fakultas Kedokteran", "partnerProdi": "S2 Sains Biomedis"}]}, {"name": "Fathinah Ranggauni Hardy", "code": "FRH", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Kesehatan Masyarakat", "items": [{"no": "38", "fakultas": "Fakultas Kedokteran", "unit": "Kedokteran", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Rita Ismail", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Keperawatan"}, {"no": "44", "fakultas": "Fakultas Kedokteran", "unit": "Profesi Apoteker", "jenjang": "Profesi", "statusProdi": "Baru", "role": "Anggota", "partner": "Yulizar Widiatama", "partnerRole": "Ketua", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Industri"}]}, {"name": "Feda Anisah Makkiyah", "code": "FAM", "asalFak": "Fakultas Kedokteran", "asalProdi": "S1 Kedokteran", "items": [{"no": "17", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Keperawatan", "jenjang": "D3", "statusProdi": "Lama", "role": "Ketua", "partner": "Zatin Niqotaini", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Sistem Informasi"}]}, {"name": "Hengki Tamando Sihotang", "code": "HTS", "asalFak": "Fakultas Ilmu Komputer", "asalProdi": "S1 Informatika", "items": [{"no": "2", "fakultas": "Fakultas Teknik", "unit": "Teknik Mesin", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Lusyta Puri Ardhiyanti", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S2 Kesehatan Masyarakat"}, {"no": "22", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Fisioterapi", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Muchamad Oktaviandri", "partnerRole": "Ketua", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Mesin"}]}, {"name": "Henry Binsar Hamonangan Sitorus", "code": "HBH", "asalFak": "Fakultas Teknik", "asalProdi": "S1 Teknik Elektro", "items": [{"no": "27", "fakultas": "Fakultas Ilmu Komputer", "unit": "Informatika", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Arga Buntara", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}]}, {"name": "Ibnu Malkan Bakhrul Ilmi", "code": "IMB", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Gizi", "items": [{"no": "43", "fakultas": "Fakultas Kedokteran", "unit": "Biologi", "jenjang": "S1", "statusProdi": "Baru", "role": "Anggota", "partner": "Suparni", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}]}, {"name": "Iin Fatmawati", "code": "IFI", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Gizi", "items": [{"no": "26", "fakultas": "Fakultas Ilmu Komputer", "unit": "Sistem Informasi", "jenjang": "D3", "statusProdi": "Lama", "role": "Ketua", "partner": "Nur Fajriah", "partnerRole": "Anggota", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Industri"}, {"no": "39", "fakultas": "Fakultas Kedokteran", "unit": "Farmasi", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Cut Sarida Pompey", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "Profesi Ners"}]}, {"name": "Ika Nurlaili Isnainiyah", "code": "INI", "asalFak": "Fakultas Ilmu Komputer", "asalProdi": "S1 Sistem Informasi", "items": [{"no": "25", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Keperawatan", "jenjang": "S2", "statusProdi": "Baru", "role": "Anggota", "partner": "Ima Maria", "partnerRole": "Ketua", "partnerFak": "Fakultas Kedokteran", "partnerProdi": "S1 Kedokteran"}, {"no": "35", "fakultas": "Fakultas Ilmu Sosial dan Ilmu Politik", "unit": "Ilmu Komunikasi", "jenjang": "S2", "statusProdi": "Lama", "role": "Ketua", "partner": "", "partnerRole": "Anggota", "partnerFak": "", "partnerProdi": ""}]}, {"name": "Ima Maria", "code": "IMM", "asalFak": "Fakultas Kedokteran", "asalProdi": "S1 Kedokteran", "items": [{"no": "23", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Profesi Ners", "jenjang": "Profesi", "statusProdi": "Lama", "role": "Ketua", "partner": "Alina Cynthia Dewi", "partnerRole": "Anggota", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Industri"}, {"no": "25", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Keperawatan", "jenjang": "S2", "statusProdi": "Baru", "role": "Ketua", "partner": "Ika Nurlaili Isnainiyah", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Sistem Informasi"}]}, {"name": "Kraugusteeliana", "code": "KRA", "asalFak": "Fakultas Ilmu Komputer", "asalProdi": "S1 Sistem Informasi", "items": [{"no": "1", "fakultas": "Fakultas Teknik", "unit": "Teknik Industri", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Chandrayani Simanjorang", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}]}, {"name": "Lusyta Puri Ardhiyanti", "code": "LPA", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S2 Kesehatan Masyarakat", "items": [{"no": "2", "fakultas": "Fakultas Teknik", "unit": "Teknik Mesin", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Hengki Tamando Sihotang", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Informatika"}, {"no": "40", "fakultas": "Fakultas Kedokteran", "unit": "Profesi Dokter", "jenjang": "Profesi", "statusProdi": "Lama", "role": "Anggota", "partner": "Arief Wahyudi Jadmiko", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Keperawatan"}, {"no": "42", "fakultas": "Fakultas Kedokteran", "unit": "Spesialis Radiologi", "jenjang": "Spesialis", "statusProdi": "Baru", "role": "Anggota", "partner": "Arief Wahyudi Jadmiko", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Keperawatan"}]}, {"name": "Maria Selvester Thadeus", "code": "MST", "asalFak": "Fakultas Kedokteran", "asalProdi": "S2 Sains Biomedis", "items": [{"no": "18", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Fisioterapi", "jenjang": "D3", "statusProdi": "Lama", "role": "Ketua", "partner": "Fajar Rahayu Ikhwannul Mariati", "partnerRole": "Anggota", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Elektro"}, {"no": "21", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Keperawatan", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Musthofa Galih Pradana", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Sains Data"}, {"no": "24", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Kesehatan Masyarakat", "jenjang": "S2", "statusProdi": "Baru", "role": "Ketua", "partner": "Yulizar Widiatama", "partnerRole": "Anggota", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Industri"}]}, {"name": "Muchamad Oktaviandri", "code": "MOU", "asalFak": "Fakultas Teknik", "asalProdi": "S1 Teknik Mesin", "items": [{"no": "22", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Fisioterapi", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Hengki Tamando Sihotang", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Informatika"}]}, {"name": "Munasiron Miftah", "code": "MMU", "asalFak": "Fakultas Ekonomi dan Bisnis", "asalProdi": "S1 Akuntansi", "items": [{"no": "13", "fakultas": "Fakultas Hukum", "unit": "Ilmu Hukum", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Zatin Niqotaini", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Sistem Informasi"}]}, {"name": "Musthofa Galih Pradana", "code": "MGP", "asalFak": "Fakultas Ilmu Komputer", "asalProdi": "S1 Sains Data", "items": [{"no": "14", "fakultas": "Fakultas Hukum", "unit": "Hukum", "jenjang": "S2", "statusProdi": "Lama", "role": "Anggota", "partner": "Ni Putu Eka Widiastuti", "partnerRole": "Ketua", "partnerFak": "Fakultas Ekonomi dan Bisnis", "partnerProdi": "S2 Akuntansi"}, {"no": "21", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Keperawatan", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Maria Selvester Thadeus", "partnerRole": "Ketua", "partnerFak": "Fakultas Kedokteran", "partnerProdi": "S2 Sains Biomedis"}]}, {"name": "Muthia Sakti", "code": "MSU", "asalFak": "Fakultas Hukum", "asalProdi": "S1 Hukum", "items": [{"no": "9", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Ekonomi Pembangunan", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Anindita Lintangdesi Afriani", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Komunikasi"}, {"no": "11", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Manajemen", "jenjang": "S2", "statusProdi": "Lama", "role": "Ketua", "partner": "Anindita Lintangdesi Afriani", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Komunikasi"}, {"no": "48", "fakultas": "Satuan Kerja Pendukung", "unit": "Biro Perencanaan Keuangan dan Umum", "jenjang": "-", "statusProdi": "-", "role": "Anggota", "partner": "Satria Yudhia Wijaya", "partnerRole": "Ketua", "partnerFak": "Fakultas Ekonomi dan Bisnis", "partnerProdi": "S1 Akuntansi"}]}, {"name": "Nanang Alamsyah", "code": "NAA", "asalFak": "Fakultas Teknik", "asalProdi": "S1 Teknik Industri", "items": [{"no": "28", "fakultas": "Fakultas Ilmu Komputer", "unit": "Sistem Informasi", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "", "partnerRole": "Anggota", "partnerFak": "", "partnerProdi": ""}]}, {"name": "Ni Putu Eka Widiastuti", "code": "NPE", "asalFak": "Fakultas Ekonomi dan Bisnis", "asalProdi": "S2 Akuntansi", "items": [{"no": "14", "fakultas": "Fakultas Hukum", "unit": "Hukum", "jenjang": "S2", "statusProdi": "Lama", "role": "Ketua", "partner": "Musthofa Galih Pradana", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Sains Data"}, {"no": "47", "fakultas": "Satuan Kerja Pendukung", "unit": "Biro Akademik Kemahasiswaan dan Kerja Sama", "jenjang": "-", "statusProdi": "-", "role": "Ketua", "partner": "", "partnerRole": "Anggota", "partnerFak": "", "partnerProdi": ""}]}, {"name": "Nur Fajriah", "code": "NFU", "asalFak": "Fakultas Teknik", "asalProdi": "S1 Teknik Industri", "items": [{"no": "26", "fakultas": "Fakultas Ilmu Komputer", "unit": "Sistem Informasi", "jenjang": "D3", "statusProdi": "Lama", "role": "Anggota", "partner": "Iin Fatmawati", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Gizi"}]}, {"name": "Nurfarah Nidatya", "code": "NNU", "asalFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "asalProdi": "S1 Hubungan Internasional", "items": [{"no": "6", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Akuntansi", "jenjang": "D3", "statusProdi": "Lama", "role": "Ketua", "partner": "Citraresmi Widoretno Putri", "partnerRole": "Anggota", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}, {"no": "7", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Manajemen", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Dwi Aryanti Ramadhani", "partnerRole": "Ketua", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}]}, {"name": "Putri Permatasari", "code": "PPU", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Kesehatan Masyarakat", "items": [{"no": "4", "fakultas": "Fakultas Teknik", "unit": "Teknik Elektro", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Widya Cholil", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Informatika"}, {"no": "10", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Ekonomi Syariah", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Vinta Sevilla", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Komunikasi"}]}, {"name": "Restu Rahmawati", "code": "RRE", "asalFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "asalProdi": "S1 Ilmu Politik", "items": [{"no": "5", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Perbankan dan Keuangan", "jenjang": "D3", "statusProdi": "Lama", "role": "Ketua", "partner": "Ema Nurkhaerani", "partnerRole": "Anggota", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}, {"no": "8", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Akuntansi", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Dwi Aryanti Ramadhani", "partnerRole": "Ketua", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}]}, {"name": "Rita Ismail", "code": "RII", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Keperawatan", "items": [{"no": "38", "fakultas": "Fakultas Kedokteran", "unit": "Kedokteran", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Fathinah Ranggauni Hardy", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}]}, {"name": "Santika Sari", "code": "SSA", "asalFak": "Fakultas Teknik", "asalProdi": "S1 Teknik Industri", "items": [{"no": "19", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Kesehatan Masyarakat", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Erna Harfiani", "partnerRole": "Ketua", "partnerFak": "Fakultas Kedokteran", "partnerProdi": "S1 Kedokteran"}, {"no": "29", "fakultas": "Fakultas Ilmu Komputer", "unit": "Sains Data", "jenjang": "S1", "statusProdi": "Baru", "role": "Ketua", "partner": "Anindita Lintangdesi Afriani", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Komunikasi"}]}, {"name": "Satria Yudhia Wijaya", "code": "SYW", "asalFak": "Fakultas Ekonomi dan Bisnis", "asalProdi": "S1 Akuntansi", "items": [{"no": "32", "fakultas": "Fakultas Ilmu Sosial dan Ilmu Politik", "unit": "Hubungan Internasional", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "", "partnerRole": "Anggota", "partnerFak": "", "partnerProdi": ""}, {"no": "48", "fakultas": "Satuan Kerja Pendukung", "unit": "Biro Perencanaan Keuangan dan Umum", "jenjang": "-", "statusProdi": "-", "role": "Ketua", "partner": "Muthia Sakti", "partnerRole": "Anggota", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}]}, {"name": "Shanti Darmastuti", "code": "SDH", "asalFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "asalProdi": "S1 Hubungan Internasional", "items": [{"no": "12", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Akuntansi", "jenjang": "S2", "statusProdi": "Lama", "role": "Ketua", "partner": "Dwi Aryanti Ramadhani", "partnerRole": "Anggota", "partnerFak": "Fakultas Hukum", "partnerProdi": "S1 Hukum"}, {"no": "45", "fakultas": "Satuan Kerja Pendukung", "unit": "LPPM (KEP)", "jenjang": "-", "statusProdi": "-", "role": "Ketua", "partner": "", "partnerRole": "Anggota", "partnerFak": "", "partnerProdi": ""}]}, {"name": "Sri Mulyantini", "code": "SMR", "asalFak": "Fakultas Ekonomi dan Bisnis", "asalProdi": "S1 Manajemen", "items": [{"no": "15", "fakultas": "Fakultas Hukum", "unit": "Hukum", "jenjang": "S3", "statusProdi": "Baru", "role": "Ketua", "partner": "Alina Cynthia Dewi", "partnerRole": "Anggota", "partnerFak": "Fakultas Teknik", "partnerProdi": "S1 Teknik Industri"}]}, {"name": "Suparni", "code": "SUP", "asalFak": "Fakultas Ilmu Kesehatan", "asalProdi": "S1 Kesehatan Masyarakat", "items": [{"no": "41", "fakultas": "Fakultas Kedokteran", "unit": "Sains Biomedis", "jenjang": "S2", "statusProdi": "Baru", "role": "Anggota", "partner": "Chandrayani Simanjorang", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}, {"no": "43", "fakultas": "Fakultas Kedokteran", "unit": "Biologi", "jenjang": "S1", "statusProdi": "Baru", "role": "Ketua", "partner": "Ibnu Malkan Bakhrul Ilmi", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Gizi"}]}, {"name": "Tiwuk Susantiningsih", "code": "TSI", "asalFak": "Fakultas Kedokteran", "asalProdi": "S1 Kedokteran", "items": [{"no": "20", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Gizi", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Widya Cholil", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Komputer", "partnerProdi": "S1 Informatika"}]}, {"name": "Vinta Sevilla", "code": "VSI", "asalFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "asalProdi": "S1 Ilmu Komunikasi", "items": [{"no": "10", "fakultas": "Fakultas Ekonomi dan Bisnis", "unit": "Ekonomi Syariah", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Putri Permatasari", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}, {"no": "16", "fakultas": "Fakultas Hukum", "unit": "Hukum Bisnis", "jenjang": "S1", "statusProdi": "Baru", "role": "Anggota", "partner": "Aniek Irawatie", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Sosial dan Ilmu Politik", "partnerProdi": "S1 Ilmu Komunikasi"}, {"no": "53", "fakultas": "Satuan Kerja Pendukung", "unit": "UPA Layanan Uji Kompetensi", "jenjang": "-", "statusProdi": "-", "role": "Ketua", "partner": "", "partnerRole": "Anggota", "partnerFak": "", "partnerProdi": ""}]}, {"name": "Widya Cholil", "code": "WCI", "asalFak": "Fakultas Ilmu Komputer", "asalProdi": "S1 Informatika", "items": [{"no": "4", "fakultas": "Fakultas Teknik", "unit": "Teknik Elektro", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Putri Permatasari", "partnerRole": "Ketua", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}, {"no": "20", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Gizi", "jenjang": "S1", "statusProdi": "Lama", "role": "Ketua", "partner": "Tiwuk Susantiningsih", "partnerRole": "Anggota", "partnerFak": "Fakultas Kedokteran", "partnerProdi": "S1 Kedokteran"}]}, {"name": "Yulizar Widiatama", "code": "YWU", "asalFak": "Fakultas Teknik", "asalProdi": "S1 Teknik Industri", "items": [{"no": "24", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Kesehatan Masyarakat", "jenjang": "S2", "statusProdi": "Baru", "role": "Anggota", "partner": "Maria Selvester Thadeus", "partnerRole": "Ketua", "partnerFak": "Fakultas Kedokteran", "partnerProdi": "S2 Sains Biomedis"}, {"no": "44", "fakultas": "Fakultas Kedokteran", "unit": "Profesi Apoteker", "jenjang": "Profesi", "statusProdi": "Baru", "role": "Ketua", "partner": "Fathinah Ranggauni Hardy", "partnerRole": "Anggota", "partnerFak": "Fakultas Ilmu Kesehatan", "partnerProdi": "S1 Kesehatan Masyarakat"}]}, {"name": "Zatin Niqotaini", "code": "ZNA", "asalFak": "Fakultas Ilmu Komputer", "asalProdi": "S1 Sistem Informasi", "items": [{"no": "13", "fakultas": "Fakultas Hukum", "unit": "Ilmu Hukum", "jenjang": "S1", "statusProdi": "Lama", "role": "Anggota", "partner": "Munasiron Miftah", "partnerRole": "Ketua", "partnerFak": "Fakultas Ekonomi dan Bisnis", "partnerProdi": "S1 Akuntansi"}, {"no": "17", "fakultas": "Fakultas Ilmu Kesehatan", "unit": "Keperawatan", "jenjang": "D3", "statusProdi": "Lama", "role": "Anggota", "partner": "Feda Anisah Makkiyah", "partnerRole": "Ketua", "partnerFak": "Fakultas Kedokteran", "partnerProdi": "S1 Kedokteran"}]}];
+const STATE = {};
+let CURRENT = null;
+let NOMOR_SEQ = 100;
+let LPMPP_AUTH = false;
+const LPMPP_PASS = 'lpmpp2026';
+const KEPALA = {nama:'Satria Yudhia Wijaya, S.E., M.S., Ak.', nip:'NIP. 197406062021211004'};
+const BULAN=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+function tglID(d){d=d||new Date();return d.getDate()+' '+BULAN[d.getMonth()]+' '+d.getFullYear();}
+function st(name){if(!STATE[name])STATE[name]={acc:false,accDate:null,issued:false,nomor:null,note:''};return STATE[name];}
+
+function show(v){
+  document.getElementById('view-auditor').classList.toggle('hidden', v!=='auditor');
+  document.getElementById('view-lpmpp').classList.toggle('hidden', v!=='lpmpp');
+  document.getElementById('nav-auditor').classList.toggle('active', v==='auditor');
+  document.getElementById('nav-lpmpp').classList.toggle('active', v==='lpmpp');
+  if(v==='auditor' && CURRENT && !document.getElementById('auditor-detail').classList.contains('hidden')) renderAuditor();
+  if(v==='lpmpp'){
+    document.getElementById('lpmpp-gate').classList.toggle('hidden', LPMPP_AUTH);
+    document.getElementById('lpmpp-content').classList.toggle('hidden', !LPMPP_AUTH);
+    if(LPMPP_AUTH) renderLpmpp();
+  }
+}
+function cekPass(){
+  if(document.getElementById('inp-pass').value===LPMPP_PASS){
+    LPMPP_AUTH=true;
+    document.getElementById('lpmpp-gate').classList.add('hidden');
+    document.getElementById('lpmpp-content').classList.remove('hidden');
+    renderLpmpp();
+  } else { document.getElementById('pass-err').style.display='block'; }
+}
+
+const sel=document.getElementById('sel-auditor');
+AUDITORS.forEach(a=>{const o=document.createElement('option');o.value=a.name;o.textContent=a.name+'  ('+a.code+' · '+a.items.length+' penugasan)';sel.appendChild(o);});
+function find(name){return AUDITORS.find(a=>a.name===name);}
+
+function openAuditor(){CURRENT=sel.value;renderAuditor();document.getElementById('gate-card').classList.add('hidden');document.getElementById('auditor-detail').classList.remove('hidden');}
+function backGate(){document.getElementById('gate-card').classList.remove('hidden');document.getElementById('auditor-detail').classList.add('hidden');}
+function roleTag(r){return '<span class="tag '+(r==='Ketua'?'tag-ketua':'tag-anggota')+'">'+r+'</span>';}
+function statTag(s){if(s==='Baru')return '<span class="tag tag-baru">Prodi Baru</span>';if(s==='Lama')return '<span class="tag tag-lama">Prodi Lama</span>';return '<span class="tag" style="background:#eee;color:#666">'+s+'</span>';}
+
+function renderAuditor(){
+  const a=find(CURRENT); const s=st(CURRENT);
+  document.getElementById('ident-box').innerHTML=
+    '<div><span>Nama Auditor</span><b>'+a.name+'</b></div>'+
+    '<div><span>Kode</span><b>'+a.code+'</b></div>'+
+    '<div><span>Unit Asal</span><b>'+a.asalProdi+' — '+a.asalFak+'</b></div>'+
+    '<div><span>Jumlah Penugasan</span><b>'+a.items.length+' unit</b></div>';
+  const tb=document.querySelector('#tbl-tugas tbody'); tb.innerHTML='';
+  a.items.forEach(it=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+it.no+'</td><td><b>'+it.unit+'</b></td><td>'+it.fakultas+'</td><td>'+it.jenjang+'</td>'+
+      '<td>'+statTag(it.statusProdi)+'</td><td>'+roleTag(it.role)+'</td>'+
+      '<td>'+roleTag(it.partnerRole)+' '+it.partner+'<br><span style="font-size:11px;color:var(--muted)">'+it.partnerFak+'</span></td>';
+    tb.appendChild(tr);
+  });
+  document.getElementById('inp-note').value=s.note||'';
+  const accBtn=document.getElementById('btn-acc'), chk=document.getElementById('chk-pakta'),
+        flash=document.getElementById('flash-acc'), unduh=document.getElementById('btn-unduh'),
+        wait=document.getElementById('acc-wait'), note=document.getElementById('inp-note');
+  unduh.style.display='inline-block';
+  if(s.acc){
+    accBtn.textContent='✓ Sudah ACC ('+tglID(new Date(s.accDate))+')'; accBtn.disabled=true;
+    chk.checked=true; chk.disabled=true; note.disabled=true; flash.style.display='block';
+    unduh.disabled=!s.issued;
+    wait.style.display=s.issued?'none':'block';
+  } else {
+    accBtn.textContent='✓ ACC & Kirim Kesediaan'; accBtn.disabled=true;
+    chk.checked=false; chk.disabled=false; note.disabled=false;
+    flash.style.display='none'; unduh.disabled=true; wait.style.display='none';
+  }
+}
+function setNote(v){st(CURRENT).note=v;}
+function doAcc(){const s=st(CURRENT);s.acc=true;s.accDate=Date.now();renderAuditor();window.scrollTo({top:0,behavior:'smooth'});}
+
+function statusOf(name){const s=st(name);if(s.issued)return 'terbit';if(s.acc)return 'acc';return 'belum';}
+function renderLpmpp(){
+  const q=(document.getElementById('search-lpmpp').value||'').toLowerCase();
+  let belum=0,acc=0,terbit=0;
+  AUDITORS.forEach(a=>{const t=statusOf(a.name);if(t==='belum')belum++;else if(t==='acc')acc++;else terbit++;});
+  document.getElementById('kpi-total').textContent=AUDITORS.length;
+  document.getElementById('kpi-belum').textContent=belum;
+  document.getElementById('kpi-acc').textContent=acc;
+  document.getElementById('kpi-terbit').textContent=terbit;
+  const tb=document.querySelector('#tbl-lpmpp tbody'); tb.innerHTML='';
+  AUDITORS.filter(a=>a.name.toLowerCase().includes(q)).forEach((a,i)=>{
+    const s=st(a.name); const t=statusOf(a.name);
+    const stHtml=t==='terbit'?'<span class="st st-terbit">Surat Terbit</span>':t==='acc'?'<span class="st st-acc">Sudah ACC</span>':'<span class="st st-belum">Belum ACC</span>';
+    let aksi;
+    if(t==='belum') aksi='<button class="btn btn-ghost btn-sm" onclick="gotoAuditor(\''+esc(a.name)+'\')">Lihat</button>';
+    else if(t==='acc') aksi='<button class="btn btn-gold btn-sm" onclick="terbit(\''+esc(a.name)+'\')">Terbitkan Surat</button>';
+    else aksi='<button class="btn btn-ghost btn-sm" onclick="openSuratFor(\''+esc(a.name)+'\')">Lihat Surat</button>';
+    const tr=document.createElement('tr');
+    tr.innerHTML='<td>'+(i+1)+'</td><td><b>'+a.name+'</b><br><span style="font-size:11px;color:var(--muted)">'+a.code+'</span></td>'+
+      '<td style="font-size:12px">'+a.asalProdi+'<br><span style="color:var(--muted)">'+a.asalFak+'</span></td>'+
+      '<td style="text-align:center">'+a.items.length+'</td><td>'+stHtml+'</td>'+
+      '<td style="font-size:11.5px">'+(s.nomor||'—')+'</td><td style="text-align:right">'+aksi+'</td>';
+    tb.appendChild(tr);
+  });
+}
+function esc(s){return s.replace(/'/g,"\\'");}
+function gotoAuditor(name){sel.value=name;show('auditor');openAuditor();}
+function nextNomor(){NOMOR_SEQ++;return 'B/'+NOMOR_SEQ+'/UN61/LPMPP/AMI/VI/2026';}
+function terbit(name){const s=st(name);if(!s.acc)return;s.issued=true;s.nomor=nextNomor();renderLpmpp();}
+function terbitMassal(){let n=0;AUDITORS.forEach(a=>{const s=st(a.name);if(s.acc&&!s.issued){s.issued=true;s.nomor=nextNomor();n++;}});renderLpmpp();alert(n+' surat tugas diterbitkan.');}
+function simAccAll(){AUDITORS.forEach(a=>{const s=st(a.name);if(!s.acc){s.acc=true;s.accDate=Date.now();}});renderLpmpp();}
+
+function decoQR(seed){let h=0;for(let i=0;i<seed.length;i++){h=(h*31+seed.charCodeAt(i))>>>0;}
+  const n=11,c=6;let rects='';
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++){h=(h*1103515245+12345)>>>0;const on=(h>>16)&1;
+    if(on||((x<3||x>n-4)&&(y<3)))rects+='<rect x="'+(x*c)+'" y="'+(y*c)+'" width="'+c+'" height="'+c+'"/>';}
+  return '<svg width="66" height="66" viewBox="0 0 '+(n*c)+' '+(n*c)+'" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#fff"/><g fill="#003F7F">'+rects+'</g></svg>';}
+function openSuratFor(name){
+  CURRENT=name; const a=find(name); const s=st(name);
+  if(!s.issued){alert('Surat belum diterbitkan LPMPP.');return;}
+  const rows=a.items.map((it,i)=>'<tr><td style="text-align:center">'+(i+1)+'</td><td>'+it.unit+'</td><td>'+it.fakultas+'</td><td style="text-align:center">'+it.jenjang+'</td><td style="text-align:center">'+it.role+'</td></tr>').join('');
+  const vcode=a.code+'-'+s.nomor.split('/')[1];
+  document.getElementById('surat-body').innerHTML=
+  '<div class="kop"><div class="logo">UPN<br>VETERAN<br>JKT</div>'+
+   '<div class="ktext"><div class="u">KEMENTERIAN PENDIDIKAN TINGGI, SAINS, DAN TEKNOLOGI</div>'+
+   '<div class="b">UNIVERSITAS PEMBANGUNAN NASIONAL "VETERAN" JAKARTA</div>'+
+   '<div class="l">LEMBAGA PENGEMBANGAN MUTU & PROSES PEMBELAJARAN (LPMPP)</div>'+
+   '<div class="a">Jl. RS Fatmawati Raya, Pondok Labu, Jakarta Selatan 12450 · Telp. (021) 7656971 · www.upnvj.ac.id</div></div></div>'+
+  '<h3>SURAT TUGAS</h3><div class="nomor">Nomor: '+s.nomor+'</div>'+
+  '<div class="menimbang"><div>Dasar</div><div>:</div><div>1. Peraturan Menteri Pendidikan Tinggi, Sains, dan Teknologi Nomor 39 Tahun 2025 tentang Sistem Penjaminan Mutu Pendidikan Tinggi;<br>2. Keputusan Rektor UPN "Veteran" Jakarta tentang Penetapan Auditor Audit Mutu Internal (AMI) Tahun 2026;<br>3. Pedoman Audit Mutu Internal (AMI) UPN "Veteran" Jakarta Tahun 2026.</div></div>'+
+  '<p>Kepala Lembaga Pengembangan Mutu dan Proses Pembelajaran UPN "Veteran" Jakarta dengan ini menugaskan:</p>'+
+  '<div class="menimbang"><div></div><div>Nama</div><div>: <b>'+a.name+'</b></div>'+
+   '<div></div><div>Kode Auditor</div><div>: '+a.code+'</div>'+
+   '<div></div><div>Unit Asal</div><div>: '+a.asalProdi+', '+a.asalFak+'</div>'+
+   '<div></div><div>Sebagai</div><div>: Auditor Audit Mutu Internal (AMI) Tahun 2026</div></div>'+
+  '<p>untuk melaksanakan kegiatan Audit Mutu Internal (AMI) Tahun 2026 pada unit-unit berikut:</p>'+
+  '<table class="tugas"><thead><tr><th style="width:32px">No</th><th>Unit / Program Studi</th><th>Fakultas / Satuan Kerja</th><th style="width:70px">Jenjang</th><th style="width:70px">Peran</th></tr></thead><tbody>'+rows+'</tbody></table>'+
+  '<p>Penugasan ini berlaku untuk periode pelaksanaan AMI Tahun 2026 (Juni–Agustus 2026). Auditor melaksanakan tugas sesuai Pedoman AMI 2026 dengan menjunjung independensi dan integritas. Surat tugas ini dibuat untuk dilaksanakan dengan penuh tanggung jawab.</p>'+
+  '<div class="ttd"><div class="qr">'+decoQR(s.nomor)+'<div style="margin-top:3px">Verifikasi keaslian<br>'+vcode+'</div></div>'+
+   '<div class="sign">Jakarta, '+tglID(new Date(s.accDate))+'<br>Kepala LPMPP,<div class="ttd-box">ruang tanda tangan<br>(TTD digital ditempel di sini)</div><b>'+KEPALA.nama+'</b><br>'+KEPALA.nip+'</div></div>'+
+  '<div class="foot-note">Dokumen ini diterbitkan secara elektronik melalui Sistem AMI UPNVJ. Keaslian dapat diperiksa pada ami-upnvj.ac.id/verify dengan kode '+vcode+'. (Prototipe — QR & tanda tangan bersifat placeholder.)</div>';
+  document.getElementById('surat-overlay').classList.add('show');
+}
+function closeSurat(){document.getElementById('surat-overlay').classList.remove('show');}
+</script>
+</body>
+</html>
